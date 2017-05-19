@@ -2,6 +2,8 @@
 
 This is Ansible role for change locale for RedHat Enterprise Linux, Ubuntu and Debian.
 
+[![Build Status](https://travis-ci.org/shhirose/ansible-locale.svg?branch=master)](https://travis-ci.org/shhirose/ansible-locale)
+
 ## Requirements
 
 None
