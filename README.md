@@ -10,7 +10,7 @@ None
 
 ## Role Variables
 
-* locale - The value for variable LANG
+* shhirose\_locale\_locale - The value for variable LANG
 
 ## Dependencies
 
@@ -26,7 +26,7 @@ Example:
   roles:
      - { role: shhirose.locale }
   vars:
-    locale: "ja_JP.UTF-8"
+    shhirose_locale_locale: "ja_JP.UTF-8"
 ```
 
 Result (CentOS):
