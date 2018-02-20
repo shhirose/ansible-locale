@@ -43,5 +43,5 @@ script:
       exit 1
     fi
 
-notification:
+notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
