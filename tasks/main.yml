@@ -9,9 +9,3 @@
   when: ansible_os_family == "Debian"
   tags:
     - locale
-
-- include: "{{ ansible_os_family }}.yml"
-  when: ansible_os_family == "Ubuntu"
-  tags:
-    - locale
-

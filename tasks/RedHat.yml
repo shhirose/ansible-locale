@@ -2,7 +2,19 @@
 - name: Check setting locale
   shell: echo $LANG
   register: current_locale
-  changed_when: current_locale.stdout != shhirose_locale_locale 
+  changed_when: current_locale.stdout != shhirose_locale_locale
   notify: Change locale for RedHat
   when: ansible_distribution_major_version|int >=7
 
+- name: Check setting locale for RHEL v6
+  shell: echo $LANG
+  register: current_locale
+  changed_when: false
+  when: ansible_distribution_major_version|int == 6
+
+- name: Setting locale for RHEL v6
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items: "{{ shhirose_locale_config_files }}"
+  when: ansible_distribution_major_version|int == 6 and current_locale.stdout != shhirose_locale_locale
