@@ -1,0 +1,3 @@
+shhirose_locale_config_files:
+  - src: i18n.j2
+    dest: '/etc/sysconfig/i18n'
