@@ -1,4 +1,14 @@
 ---
+- name: Check installed locale
+  shell: localectl list-locales | grep {{ shhirose_locale_locale }} | wc -l
+  register: installed_locale
+  changed_when: false
+  when: ansible_distribution_major_version|int >=7
+
+- name: Installe locale
+  shell: "localedef -f {{ shhirose_locale_locale | regex_replace('^(.*)\\.(.*)$', '\\2') }} -i {{ shhirose_locale_locale | regex_replace('^(.*)\\.(.*)$', '\\1') }} {{ shhirose_locale_locale }}"
+  when: installed_locale.stdout == 0 and ansible_distribution_major_version|int >=7
+
 - name: Check setting locale
   shell: echo $LANG
   register: current_locale
