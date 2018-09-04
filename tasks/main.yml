@@ -1,5 +1,12 @@
 ---
-# tasks file for locale
+- name: Include vars
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Setting default variables
+  set_fact:
+    shhirose_locale_locale: "{{ __shhirose_locale_locale }}"
+  when: shhirose_locale_locale is not defined
+
 - include: "{{ ansible_os_family }}.yml"
   when: ansible_os_family == "RedHat"
   tags:
